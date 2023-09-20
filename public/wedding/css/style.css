@@ -1,0 +1,110 @@
+*{
+    font-family: ProximaNova,Helvetica,Arial,sans-serif;
+}
+.nav-item{
+    font-size: 16px;
+}
+.d-py{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    background:rgba(0,0,0,0.4);
+}
+.desc{
+    padding-top: 150px;
+    font-size: 21px;
+}
+.rat:hover{
+    color: #ea5c8b;
+}
+.fa-star{
+    color: #fc85ae !important;
+}
+.rating {
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    font-size: 40px;
+}
+
+.rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+.rating label:last-child {
+    position: static;
+}
+
+.rating label:nth-child(1) {
+    z-index: 5;
+}
+
+.rating label:nth-child(2) {
+    z-index: 4;
+}
+
+.rating label:nth-child(3) {
+    z-index: 3;
+}
+
+.rating label:nth-child(4) {
+    z-index: 2;
+}
+
+.rating label:nth-child(5) {
+    z-index: 1;
+}
+
+.rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.rating label .icon {
+    float: left;
+    color: transparent;
+}
+
+.rating label:last-child .icon {
+    color: #cdcbcb;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+    color: #fc85ae;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px #fc85ae;
+}
+.modal-content{
+    background: #f7efe9 !important;
+}
+.pbr{
+    cursor: pointer;
+}
+.pbr ,.pa_card{
+    box-shadow: 0 15px 15px 0 rgba(0,0,0,.06);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.pbr:hover ,.pa_card:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
