@@ -46,9 +46,9 @@
                                         <td>{{ $wp->date }}</td>
                                         <td>
                                             @if($wp->status == 'waiting')
-                                                <small class="badge badge-warning">{{ $wp->status }}</small>
+                                                <small class="badge badge-warning p-2">{{ $wp->status }}</small>
                                             @else
-                                                <small class="badge badge-success">{{ $wp->status }}</small>
+                                                <small class="badge badge-success p-2">{{ $wp->status }}</small>
                                             @endif
                                         </td>
                                         <td>{{ $wp->created_at->diffForHumans() }}</td>

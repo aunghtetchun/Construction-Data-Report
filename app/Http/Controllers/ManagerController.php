@@ -30,7 +30,6 @@ class ManagerController extends Controller
             'item_id' => 'required|exists:items,id',
             'count' => 'required',
         ]);
-
         $order = new Order();
         $order->item_id = $request->item_id;
         $order->count = $request->count;
@@ -43,8 +42,12 @@ class ManagerController extends Controller
     }
     public function editOrder($id){
         $items = Item::all();
-        $orders = Order::find($id);
-        return view('manager.edit-order', compact('items','orders'));
+        $orders = Order::where('manager_id',auth()->user()->id)->find($id);
+        if($orders->status=='waiting'){
+            return view('manager.edit-order', compact('items','orders'));
+        }else{
+            return abort(404);
+        }
     }
     public function updateOrder(Request $request, $id){
         $request->validate([
@@ -52,6 +55,9 @@ class ManagerController extends Controller
             'count' => 'required',
         ]);
         $order = Order::where('manager_id',auth()->user()->id)->find($id);
+        if(!$order){
+            return redirect()->route('manager.getOrder')->with('status', 'Permission Denined');
+        }
         $order->item_id = $request->item_id;
         $order->count = $request->count;
         $order->manager_id = auth()->user()->id;
@@ -62,7 +68,7 @@ class ManagerController extends Controller
         return redirect()->route('manager.getOrder')->with('status', 'Order updated successfully');
     }
     public function deleteOrder($id){
-        $order = Order::find($id);
+        $order = Order::where('manager_id',auth()->user()->id)->find($id);
         if($order->status == 'waiting'){
         $order->delete();
         }
@@ -73,14 +79,16 @@ class ManagerController extends Controller
         return view('manager.report-list',compact('reports'));
     }
     public function approve($id){
-       $report=Report::find($id);
+       $report=Report::where('manager_id', auth()->user()->id)->find($id);
        $report->status="approved";
        $report->update();
        return redirect()->route('manager.getReport')->with('status', 'Report Approved successfully');
     }
     public function reject($id){
-        $report=Report::find($id);
-        $report->delete();
+        $report=Report::where('manager_id', auth()->user()->id)->find($id);
+        if($report && $report->status=="waiting"){
+            $report->delete();
+        }
         return redirect()->route('manager.getReport')->with('status', 'Report Reject successfully');
      }
 }
