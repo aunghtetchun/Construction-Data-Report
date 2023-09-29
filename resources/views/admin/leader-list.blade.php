@@ -33,6 +33,8 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Manager</th>
                                     <th scope="col">Address</th>
+                                    <th scope="col">Label One</th>
+                                    <th scope="col">Label Two</th>
                                     <th scope="col">Created_at</th>
                                     <th scope="col">Control</th>
                                 </tr>
@@ -45,6 +47,8 @@
                                         <td>{{ $wp->email }}</td>
                                         <td>{{ App\User::find($wp->manager_id)->name  }}</td>
                                         <td>{{ $wp->address }}</td>
+                                        <td>{{ $wp->label_one }}</td>
+                                        <td>{{ $wp->label_two }}</td>
                                         <td>{{ $wp->created_at->diffForHumans() }}</td>
                                         <td>
                                             <a href="{{ route('admin.editLeader', $wp->id) }}"

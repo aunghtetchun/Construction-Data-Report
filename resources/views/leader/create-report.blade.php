@@ -32,8 +32,12 @@
             </div>
             @endif
             <div class="form-group">
-                <label for="count">Count</label>
-                <input type="number" name="count" value="" class="form-control" id="count" required>
+                <label for="label_one_count">{{auth()->user()->label_one}} အရေအတွက်</label>
+                <input type="number" name="label_one_count" value="" class="form-control" id="label_one_count" required>
+            </div>
+            <div class="form-group">
+                <label for="label_two_count">{{auth()->user()->label_two}} အရေအတွက်</label>
+                <input type="number" name="label_two_count" value="" class="form-control" id="label_two_count" required>
             </div>
             <div class="form-group">
                 <label for="date">Date</label>

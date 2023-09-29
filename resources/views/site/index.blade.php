@@ -40,7 +40,7 @@
                                     <tr>
                                         <th scope="row">{{ $p->id }}</th>
                                         <td>{{ $p->name }}</td>
-                                        <td>{{ $p->details}}</td>
+                                        <td>{{ \App\Custom::toShort(strip_tags(html_entity_decode($p->details)), 40) }}</td>
                                         <td class="control-group d-flex" style="vertical-align: middle; text-align: center">
                                                 {{-- <form action="{{ route('item.destroy', $p->id) }}" method="post">
                                                     @csrf

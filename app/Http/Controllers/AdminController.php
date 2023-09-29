@@ -127,6 +127,8 @@ class AdminController extends Controller
             'password' => 'required|min:6',
             'manager_id' => 'required|exists:users,id,role,manager',
             'address' => 'required',
+            'label_one' => 'required',
+            'label_two' => 'required',
         ]);
 
         $user = new User();
@@ -136,9 +138,11 @@ class AdminController extends Controller
         $user->manager_id = $request->manager_id;
         $user->address = $request->address;
         $user->role = 'leader';
+        $user->label_one = $request->label_one;
+        $user->label_two = $request->label_two;
         $user->save();
 
-        return redirect()->route('admin.create-leader')->with('status', 'User created successfully');
+        return redirect()->route('admin.createLeader')->with('status', 'User created successfully');
     }
     public function editLeader($id){
         $managers = User::where('role', 'manager')->get();
@@ -150,6 +154,8 @@ class AdminController extends Controller
             'name' => 'required',
             'email' => 'required',
             'address' => 'required',
+            'label_one' => 'required',
+            'label_two' => 'required',
         ]);
         $user = User::find($id);
         $user->name = $request->name;
@@ -158,6 +164,8 @@ class AdminController extends Controller
             $user->password = bcrypt($request->password);
         }
         $user->address = $request->address;
+        $user->label_one = $request->label_one;
+        $user->label_two = $request->label_two;
         $user->update();
         return redirect()->route('admin.leaderList')->with('status', 'User updated successfully');
     }

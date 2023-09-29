@@ -42,13 +42,7 @@
                                         <td>{{ $wp->id }}</td>
                                         <td>{{ $wp->getLeader->name }}</td>
                                         <td>{{ $wp->count }}</td>
-                                        <td>
-                                            @if($wp->status == 'waiting')
-                                                <span class="badge badge-warning p-2">{{ $wp->status }}</span>
-                                            @else
-                                                <span class="badge badge-success p-2">{{ $wp->status }}</span>
-                                            @endif
-                                        </td>
+                                        <td>{{ $wp->status }}</td>
                                         <td>{{ $wp->date }}</td>
                                         <td>
                                             @if($wp->status=='waiting')
@@ -99,7 +93,7 @@
         $(".table").destory();
         $(".table").dataTable({
             "order": [
-                [0, "desc"]
+                [0, "asc"]
             ]
         });
         $(".dataTables_length,.dataTables_filter,.dataTable,.dataTables_paginate,.dataTables_info").worker().addClass(

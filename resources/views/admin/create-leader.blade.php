@@ -53,6 +53,16 @@
                         <label for="address">Address</label>
                         <input type="text" name="address" class="form-control" id="address" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="label_one">Label One</label>
+                        <input type="text" name="label_one" class="form-control" id="label_one" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="label_two">Label Two</label>
+                        <input type="text" name="label_two" class="form-control" id="label_two" required>
+                    </div>
         
                     <input type="hidden" name="role" value="leader">
         

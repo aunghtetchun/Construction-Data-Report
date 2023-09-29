@@ -80,14 +80,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             }
         });
         // moment.locale("my");
-        // pdfMake.fonts = {
-        //     Arial: {
-        //         normal: 'psumm.ttf',
-        //         bold: 'psumm.ttf',
-        //         italics: 'psumm.ttf',
-        //         bolditalics: 'psumm.ttf'
-        //     }
-        // };
+        pdfMake.fonts = {
+            Arial: {
+                normal: 'psumm.ttf',
+                bold: 'psumm.ttf',
+                italics: 'psumm.ttf',
+                bolditalics: 'psumm.ttf'
+            }
+        };
         var plist = [];
         var tableLength = 100;
         var manager_id='all';
@@ -199,9 +199,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                                 row.id +
                                                 '" onClick=approveRecord(' + row.id +
                                                 ',"reject") class="btn mt-1 text-center text-white py-1 btn-danger"><i class="fas fa-user-slash"></i> Reject</button>'
-                                        } else{
-                                            return "";
-                                        }
+                                        } 
                                     }
                                 },  
                                 {
@@ -216,7 +214,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                             ],
                             dom: 'Bfrtip',
                             buttons: [
-                               'excel', 'colvis'
+                               'excel', 'pdf', 'colvis'
                             ],
                             "pageLength": tableLength,
                             // columnDefs: [{

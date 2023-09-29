@@ -80,14 +80,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             }
         });
         // moment.locale("my");
-        // pdfMake.fonts = {
-        //     Arial: {
-        //         normal: 'psumm.ttf',
-        //         bold: 'psumm.ttf',
-        //         italics: 'psumm.ttf',
-        //         bolditalics: 'psumm.ttf'
-        //     }
-        // };
+        pdfMake.fonts = {
+            Arial: {
+                normal: 'psumm.ttf',
+                bold: 'psumm.ttf',
+                italics: 'psumm.ttf',
+                bolditalics: 'psumm.ttf'
+            }
+        };
         var plist = [];
         var tableLength = 100;
         var manager_id='all';
@@ -128,7 +128,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         function listFilter(start, end) {
             $('.tb').html(
-                '<div class="table-responsive"><table id="datatable" class="table table-striped mb-0"><thead><tr><th>#</th><th>ရက်စွဲ</th><th>Leader</th><th>အရေအတွက်</th><th>Site Manger</th><th>Site Name</th></tr></thead><tbody></tbody></table></div>'
+                '<div class="table-responsive"><table id="datatable" class="table table-striped mb-0"><thead><tr><th>#</th><th>ရက်စွဲ</th><th>Leader</th><th>ကျွမ်းကျင်သူအရေအတွက်</th><th>နောက်လိုက်အရေအတွက်</th><th>Site Manger</th><th>Site Name</th></tr></thead><tbody></tbody></table></div>'
             );
             $(".card-body").LoadingOverlay("show", {
                 background: "rgba(105,214,255,0.5)"
@@ -168,10 +168,16 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                                     }
                                 },
                                 {
-                                    data: 'count',
+                                    data: 'label_one_count',
                                     "render": function(data, type, row, meta) {
-                                        return data + "‌ယောက်";
+                                        return row.label_one +" ("+ data + "‌) ယောက်";
 
+                                    }
+                                },
+                                {
+                                    data: 'label_two_count',
+                                    "render": function(data, type, row, meta) {
+                                        return row.label_two +" ("+ data + "‌) ယောက်";
                                     }
                                 },
                                 {
@@ -191,7 +197,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                             ],
                             dom: 'Bfrtip',
                             buttons: [
-                               'excel', 'colvis'
+                               'excel', 'pdf', 'colvis'
                             ],
                             "pageLength": tableLength,
                             // columnDefs: [{
